@@ -18,7 +18,9 @@ function App() {
       setQuantity("");
       setPrice("");
     }
-
+    function handleDeleteItem(indexToDelete) {
+  setItems(items.filter((item, index) => index !== indexToDelete));
+}
   return (
     <>
       <h1>My Shop Inventory</h1>
@@ -41,6 +43,7 @@ value={price}
 onChange={(e) => setPrice(e.target.value)}
 placeholder="Price"
 />
+
 <button onClick={handleAddItem}>Add Item</button>
       <table>
         <tr>
@@ -53,6 +56,7 @@ placeholder="Price"
             <td>{item.itemName}</td>
             <td>{item.quantity}</td>
             <td>{item.price}</td>
+            <td><button onClick={() => handleDeleteItem(index)}>Delete</button></td>
           </tr>
         ))}
       </table>
